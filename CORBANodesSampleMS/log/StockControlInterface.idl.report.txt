@@ -1,0 +1,71 @@
+
+
+Importing file: C:\Tmp\corba\sample\IDL\StockControlInterface.idl
+
+Importing CORBA IDL file StockControlInterface.idl into workspace at /CORBANodesSampleMS/IDL/StockControlInterface.idl
+Converting IDL file StockControlInterface.idl into a XSD
+Creating StockControlInterface.mxsd in namespace null
+Creating message definition InvalidQTY within file StockControlInterface.mxsd
+Creating message definition InvalidSKU within file StockControlInterface.mxsd
+Creating message definition InvalidSKUName within file StockControlInterface.mxsd
+Creating message definition SKUNameAlreadyExist within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.addStock within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.addStockResponse within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.createNewStockItem within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.createNewStockItemResponse within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.deleteStockItem within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.deleteStockItemResponse within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.getPrice within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.getPriceResponse within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.getSKU within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.getSKUName within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.getSKUNameResponse within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.getSKUResponse within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.getStockLevel within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.getStockLevelResponse within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.reduceStock within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.reduceStockResponse within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.setPrice within file StockControlInterface.mxsd
+Creating message definition StockControlManagementSystem.setPriceResponse within file StockControlInterface.mxsd
+Saving message definition file StockControlInterface.mxsd 
+Creating CORBASystemExceptions.mxsd in namespace null
+Creating message definition BAD_CONTEXT within file CORBASystemExceptions.mxsd
+Creating message definition BAD_INV_ORDER within file CORBASystemExceptions.mxsd
+Creating message definition BAD_OPERATION within file CORBASystemExceptions.mxsd
+Creating message definition BAD_PARAM within file CORBASystemExceptions.mxsd
+Creating message definition BAD_TYPECODE within file CORBASystemExceptions.mxsd
+Creating message definition CODESET_INCOMPATIBLE within file CORBASystemExceptions.mxsd
+Creating message definition COMM_FAILURE within file CORBASystemExceptions.mxsd
+Creating message definition DATA_CONVERSION within file CORBASystemExceptions.mxsd
+Creating message definition FREE_MEM within file CORBASystemExceptions.mxsd
+Creating message definition IMP_LIMIT within file CORBASystemExceptions.mxsd
+Creating message definition INITIALIZE within file CORBASystemExceptions.mxsd
+Creating message definition INTERNAL within file CORBASystemExceptions.mxsd
+Creating message definition INTF_REPOS within file CORBASystemExceptions.mxsd
+Creating message definition INV_FLAG within file CORBASystemExceptions.mxsd
+Creating message definition INV_IDENT within file CORBASystemExceptions.mxsd
+Creating message definition INV_OBJREF within file CORBASystemExceptions.mxsd
+Creating message definition INV_POLICY within file CORBASystemExceptions.mxsd
+Creating message definition INVALID_TRANSACTION within file CORBASystemExceptions.mxsd
+Creating message definition MARSHAL within file CORBASystemExceptions.mxsd
+Creating message definition NO_IMPLEMENT within file CORBASystemExceptions.mxsd
+Creating message definition NO_MEMORY within file CORBASystemExceptions.mxsd
+Creating message definition NO_PERMISSION within file CORBASystemExceptions.mxsd
+Creating message definition NO_RESOURCES within file CORBASystemExceptions.mxsd
+Creating message definition NO_RESPONSE within file CORBASystemExceptions.mxsd
+Creating message definition OBJ_ADAPTER within file CORBASystemExceptions.mxsd
+Creating message definition OBJECT_NOT_EXIST within file CORBASystemExceptions.mxsd
+Creating message definition PERSIST_STORE within file CORBASystemExceptions.mxsd
+Creating message definition TRANSACTION_REQUIRED within file CORBASystemExceptions.mxsd
+Creating message definition TRANSACTION_ROLLEDBACK within file CORBASystemExceptions.mxsd
+Creating message definition TRANSIENT within file CORBASystemExceptions.mxsd
+Creating message definition UNKNOWN within file CORBASystemExceptions.mxsd
+Saving message definition file CORBASystemExceptions.mxsd 
+
+Elapsed time processing this message definition file: 1.891 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

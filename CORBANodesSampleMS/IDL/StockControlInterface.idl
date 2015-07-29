@@ -1,0 +1,16 @@
+exception InvalidSKU {};
+exception InvalidSKUName {};
+exception SKUNameAlreadyExist {long sku;};
+exception InvalidQTY {long currentQuantity; long changeQtyRequested;};
+
+interface StockControlManagementSystem {
+	long getSKU(in string name)  raises (InvalidSKUName);
+	string getSKUName(in long sku)  raises (InvalidSKU);	
+	void addStock(in long sku, in long number, out long quantity) raises (InvalidSKU);
+	void reduceStock(in long sku, in long number, out long quantity)  raises (InvalidSKU, InvalidQTY);
+	long getStockLevel(in long sku)  raises (InvalidSKU);
+	double getPrice(in long sku)  raises (InvalidSKU);
+	void setPrice(in long sku, in double price)  raises (InvalidSKU);	
+	void createNewStockItem(in string name, inout long sku)  raises (InvalidSKU, SKUNameAlreadyExist);
+	void deleteStockItem(in long sku)  raises (InvalidSKU);
+};

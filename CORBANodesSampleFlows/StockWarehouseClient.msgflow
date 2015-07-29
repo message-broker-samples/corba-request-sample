@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCORBARequest.msgnode="ComIbmCORBARequest.msgnode" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ComIbmRouteToLabel.msgnode="ComIbmRouteToLabel.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="StockWarehouseClient.msgflow"
+    nsPrefix="StockWarehouseClient.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="StockWarehouseClient" bundleName="StockWarehouseClient" pluginId="unzipped files"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/unzipped files/icons/full/obj16/StockWarehouseClient.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/unzipped files/icons/full/obj30/StockWarehouseClient.gif"/>
+    <longDescription xmi:type="utility:ConstantString" string="Sample program for use with IBM Integration Bus&#xD;&#xA;© Copyright International Business Machines Corporation 2010, 2010 &#xD;&#xA;Licensed Materials - Property of IBM"/>
+    <composition>
+      <nodes xmi:type="ComIbmCORBARequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="412,28" idlFile="IDL/StockControlInterface.idl" interfaceName="StockControlManagementSystem" operationName="createNewStockItem" namingService="localhost:2809" referenceName="Sample.WMB_Corba_Nodes/CNSCMS.Object" dataLocation="$LocalEnvironment/RequestData">
+        <translation xmi:type="utility:ConstantString" string="createNewStockItem"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="16,296" queueName="CORBA_SAMPLE_IN" messageDomainProperty="DataObject" messageFormatProperty="XML">
+        <translation xmi:type="utility:ConstantString" string="MQInput"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="1078,30" queueName="CORBA_SAMPLE_OUT">
+        <translation xmi:type="utility:ConstantString" string="MQOutput"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="288,28" labelName="createNewStockItem">
+        <translation xmi:type="utility:ConstantString" string="createStockItem"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="370,176" labelName="addStock">
+        <translation xmi:type="utility:ConstantString" string="addStock"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="304,302" labelName="getSKU">
+        <translation xmi:type="utility:ConstantString" string="getStockItem"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRouteToLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="179,297">
+        <translation xmi:type="utility:ConstantString" string="RouteToLabel"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="81,296" computeExpression="esql://routine/#StockWarehouseClient_RouteOperation.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="RouteOperation"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCORBARequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="712,29" idlFile="IDL/StockControlInterface.idl" interfaceName="StockControlManagementSystem" operationName="setPrice" namingService="localhost:2809" referenceName="Sample.WMB_Corba_Nodes/CNSCMS.Object" dataLocation="$LocalEnvironment/RequestData">
+        <translation xmi:type="utility:ConstantString" string="setPrice"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_17" location="363,442" labelName="reduceStock">
+        <translation xmi:type="utility:ConstantString" string="reduceStock"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_18" location="290,583" labelName="deleteStockItem">
+        <translation xmi:type="utility:ConstantString" string="deleteStockItem"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCORBARequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_19" location="503,176" idlFile="IDL/StockControlInterface.idl" interfaceName="StockControlManagementSystem" operationName="addStock" namingService="localhost:2809" referenceName="Sample.WMB_Corba_Nodes/CNSCMS.Object" dataLocation="$LocalEnvironment/RequestData">
+        <translation xmi:type="utility:ConstantString" string="addStockRequest"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCORBARequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_20" location="406,302" idlFile="IDL/StockControlInterface.idl" interfaceName="StockControlManagementSystem" operationName="getSKU" namingService="localhost:2809" referenceName="Sample.WMB_Corba_Nodes/CNSCMS.Object" dataLocation="$LocalEnvironment/RequestData">
+        <translation xmi:type="utility:ConstantString" string="getSKU"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCORBARequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_22" location="668,303" idlFile="IDL/StockControlInterface.idl" interfaceName="StockControlManagementSystem" operationName="getPrice" namingService="localhost:2809" referenceName="Sample.WMB_Corba_Nodes/CNSCMS.Object" dataLocation="$LocalEnvironment/RequestData">
+        <translation xmi:type="utility:ConstantString" string="getPrice"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCORBARequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_23" location="915,304" idlFile="IDL/StockControlInterface.idl" interfaceName="StockControlManagementSystem" operationName="getStockLevel" namingService="localhost:2809" referenceName="Sample.WMB_Corba_Nodes/CNSCMS.Object" dataLocation="$LocalEnvironment/RequestData">
+        <translation xmi:type="utility:ConstantString" string="getStockLevel"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCORBARequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_24" location="498,442" idlFile="IDL/StockControlInterface.idl" interfaceName="StockControlManagementSystem" operationName="reduceStock" namingService="localhost:2809" referenceName="Sample.WMB_Corba_Nodes/CNSCMS.Object" dataLocation="$LocalEnvironment/RequestData">
+        <translation xmi:type="utility:ConstantString" string="reduceStockRequest"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCORBARequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_25" location="435,583" idlFile="IDL/StockControlInterface.idl" interfaceName="StockControlManagementSystem" operationName="deleteStockItem" namingService="localhost:2809" referenceName="Sample.WMB_Corba_Nodes/CNSCMS.Object" dataLocation="$LocalEnvironment/RequestData">
+        <translation xmi:type="utility:ConstantString" string="deleteStockItemRequest"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_31" location="559,28" computeExpression="esql://routine/#StockWarehouseClient_SetPriceOperation.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="SetPriceOperation"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_34" location="529,302" computeExpression="esql://routine/#StockWarehouseClient_GetPriceOperation.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="GetPriceOperation"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_35" location="775,303" computeExpression="esql://routine/#StockWarehouseClient_GetStockLevelOperation.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="GetStockLevelOperation"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_36" location="997,304" computeExpression="esql://routine/#StockWarehouseClient_getStockItemResponse.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="getStockItemResponse"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_37" location="856,29" computeExpression="esql://routine/#StockWarehouseClient_createStockItemResponse.Main" computeMode="all">
+        <translation xmi:type="utility:ConstantString" string="createStockItemResponse"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_44" location="892,96" queueName="CORBA_SAMPLE_ERROR">
+        <translation xmi:type="utility:ConstantString" string="MQError"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_45" location="720,176" queueName="CORBA_SAMPLE_OUT">
+        <translation xmi:type="utility:ConstantString" string="MQOutput1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_46" location="1119,305" queueName="CORBA_SAMPLE_OUT">
+        <translation xmi:type="utility:ConstantString" string="MQOutput2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_47" location="702,442" queueName="CORBA_SAMPLE_OUT">
+        <translation xmi:type="utility:ConstantString" string="MQOutput3"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_48" location="691,583" queueName="CORBA_SAMPLE_OUT">
+        <translation xmi:type="utility:ConstantString" string="MQOutput4"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_49" location="603,224" queueName="CORBA_SAMPLE_ERROR">
+        <translation xmi:type="utility:ConstantString" string="MQError1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_50" location="1047,389" queueName="CORBA_SAMPLE_ERROR">
+        <translation xmi:type="utility:ConstantString" string="MQError2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_51" location="598,496" queueName="CORBA_SAMPLE_ERROR">
+        <translation xmi:type="utility:ConstantString" string="MQError3"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_52" location="572,648" queueName="CORBA_SAMPLE_ERROR">
+        <translation xmi:type="utility:ConstantString" string="MQError4"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_28" targetNode="FCMComposite_1_25" sourceNode="FCMComposite_1_18" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_59" targetNode="FCMComposite_1_22" sourceNode="FCMComposite_1_34" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_61" targetNode="FCMComposite_1_23" sourceNode="FCMComposite_1_35" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_66" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_37" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_71" targetNode="FCMComposite_1_20" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_83" targetNode="FCMComposite_1_35" sourceNode="FCMComposite_1_22" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_84" targetNode="FCMComposite_1_36" sourceNode="FCMComposite_1_23" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_85" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_89" targetNode="FCMComposite_1_31" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_92" targetNode="FCMComposite_1_13" sourceNode="FCMComposite_1_31" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_93" targetNode="FCMComposite_1_37" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_94" targetNode="FCMComposite_1_19" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_101" targetNode="FCMComposite_1_24" sourceNode="FCMComposite_1_17" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_106" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_107" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_123" targetNode="FCMComposite_1_46" sourceNode="FCMComposite_1_36" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_126" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_127" targetNode="FCMComposite_1_44" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_128" targetNode="FCMComposite_1_49" sourceNode="FCMComposite_1_19" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_129" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_20" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_131" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_22" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_132" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_23" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_133" targetNode="FCMComposite_1_51" sourceNode="FCMComposite_1_24" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_134" targetNode="FCMComposite_1_52" sourceNode="FCMComposite_1_25" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_45" sourceNode="FCMComposite_1_19" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_47" sourceNode="FCMComposite_1_24" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_48" sourceNode="FCMComposite_1_25" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_34" sourceNode="FCMComposite_1_20" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>
