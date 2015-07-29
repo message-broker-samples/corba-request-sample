@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2010, 2013
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="../../com.ibm.etools.msgbroker.samplesgallery/scripts/samples.js" type="text/javascript" xml:space="preserve"> </script>
+<script src="../../org.eclipse.help/livehelp.js" type="text/javascript" xml:space="preserve"> </script>
+<link href="css/bip4.css" rel="stylesheet" type="text/css" />
+<link href="css/gallery_common.css" rel="stylesheet" type="text/css" />
+<link href="css/gallery_messagebroker.css" rel="stylesheet" type="text/css" />
+<title>About the CORBA nodes sample</title>
+</head>
+<body class="sampcont">
+<h1>About the CORBA nodes sample</h1>
+<p>The CORBA nodes sample consists of multiple process flows within one message flow. These process flows include:</p>
+<ul>
+<li>Create a new stock item, specifying the product name and stock-keeping unit (SKU) product number. 
+A user-defined exception is 
+thrown if the SKU product number is out of range or the product name already exists.</li>
+<li>Increase stock quantity, specifying the SKU product number and quantity. 
+A user-defined exception is 
+thrown if the SKU product number does not exist.</li>
+<li>Get stock item details, specifying the product name only. A user-defined exception is 
+thrown if the product name does not exist.</li>
+<li>Reduce stock quantity, specifying the SKU product number and quantity. A user-defined exception is 
+thrown if the SKU product number does not exist or the quantity is too large.</li>
+<li>Delete the stock item, specifying the SKU product number. A user-defined exception is 
+thrown if the SKU product number does not exist.</li>
+</ul>
+<p>The following overview diagram shows the relationships between the message 
+flow on IBM Integration Bus, the naming service, and the CORBA server Java application.</p>
+<p><img border="0" src="SampleOverview.gif" alt="Diagram showing the relationship between IBM Integration Bus, naming service and COBRA server." /></p> 
+<ol>
+<li>The stock control management system is hosted as a CORBA server Java application. The server 
+application creates the CORBA object, binds this object to a reference and puts this 
+object reference into the naming service.</li>
+<li>At deployment time, the CORBARequest node contacts the naming service to get an object reference.
+The naming service is the mechanism that CORBA server applications use to put their object 
+references. The naming service is started on a specific host name and port number.</li>
+<li>The StockWarehouseClient message flow drives the requests to the CORBA server Java 
+application by using the object reference and invoking the specific operation on the 
+object in the CORBA server.</li>
+</ol>
+
+<h2>Routing the initial message request</h2>
+<p>This process flow consists of the following nodes:</p>
+<ul>
+<li>MQInput</li>
+<li>Compute (RouteOperation)</li>
+<li>RouteToLabel</li>
+</ul>
+<p><img border="0" src="RouteOperation.gif" alt="Flow diagram for the intial message request process" /></p>
+<p>The integration node receives a message request from a WebSphere MQ queue.</p>
+<p>The Compute node:</p>
+<ol>
+<li>Sets up routing of the message by specifying the correct label name to which to route in the local environment.
+</li>
+<li>Copies the message to the local environment.
+</li> 
+</ol>
+
+<h2>Creating a new stock item process</h2>
+<p>This process flow consists of the following nodes:</p>
+<ul>
+<li>Label</li>
+<li>CORBARequest (createNewStockItem)</li>
+<li>Compute (SetPriceOperation)</li>
+<li>CORBARequest (setPrice)</li>
+<li>Compute (createStockItemResponse)</li>
+<li>MQOutput (MQOutput)</li>
+<li>MQOutput (MQError)</li>
+</ul>
+<p><img border="0" src="CreateStockItem.gif" alt="Flow diagram for the new stock items process" /></p>
+<p>The Label node receives the routed message request. The CORBARequest node invokes the createNewStockItem 
+operation of the CORBA server application that is passing the input parameters, and returns a response.</p>
+<p>A Compute node copies the response data to the local environment and sets up the input parameters 
+for the next CORBA request. The next CORBARequest node invokes the setPrice operation of the CORBA  
+server application that is passing the input parameters, and returns a response.</p>
+<p>A final Compute node copies the response data to the local environment, then copies all the
+accumulated responses from the CORBARequest nodes to the message body to be propagated to a WebSphere MQ queue.</p>
+<p>Any user-defined exceptions that are thrown from the CORBA server Java application are propagated down 
+the Error terminal of the CORBARequest node to another WebSphere MQ queue.</p>
+
+<h2>Increasing stock quantity process</h2>
+<p>This process flow consists of the following nodes:</p>
+<ul>
+<li>Label</li>
+<li>CORBARequest (addStock)</li>
+<li>MQOutput (MQOutput1)</li>
+<li>MQOutput (MQError1)</li>
+</ul>
+<p><img border="0" src="AddStock.gif"  alt="Flow diagram for the increasing stock quantity process" /></p>
+<p>The Label node receives the routed message request. The CORBARequest node invokes the addStock 
+operation of the CORBA server application that is passing the input parameters, and returns a response
+that is propagated to a WebSphere MQ queue.</p>
+<p>Any user-defined exceptions that are thrown from the CORBA server Java application are propagated down
+the Error terminal of the CORBARequest node to another WebSphere MQ queue.</p>
+
+<h2>Getting stock item details process</h2>
+<p>This process flow consists of the following nodes:</p>
+<ul>
+<li>Label</li>
+<li>CORBARequest (getSKU)</li>
+<li>Compute (GetPriceOperation)</li>
+<li>CORBARequest (getPrice)</li>
+<li>Compute (GetStockLevelOperation)</li>
+<li>CORBARequest (getStockLevel)</li>
+<li>Compute (getStockItemResponse)</li>
+<li>MQOutput (MQOutput2)</li>
+<li>MQOutput (MQError2)</li>
+</ul>
+<p><img border="0" src="GetStockItem.gif" alt="Flow diagram for the getting stock item details process" /></p>
+<p>The Label node receives the routed message request. The CORBARequest node invokes the getSKU 
+operation of the CORBA server application that is passing the input parameters, and returns a response.</p>
+<p>A Compute node copies the response data to the local environment and sets up the input parameters 
+for the next CORBA request. The next CORBARequest node invokes the getPrice operation of the CORBA 
+server application that is passing the input parameters, and returns a response.</p>
+<p>Another Compute node copies the response data to the local environment and sets up the input parameters 
+for the next CORBA request. The next CORBARequest node invokes the getStockLevel operation of the CORBA 
+server application that is passing the input parameters, and returns a response.</p>
+<p>A final Compute node copies the response data to the local environment, then copies all the
+accumulated responses from the CORBARequest nodes to the message body to be propagated to a WebSphere MQ queue.</p>
+<p>Any user-defined exceptions that are thrown from the CORBA server Java application are propagated down
+the Error terminal of the CORBARequest node to another WebSphere MQ queue.</p>
+
+<h2>Reducing stock quantity process</h2>
+<p>This process flow consists of the following nodes:</p>
+<ul>
+<li>Label</li>
+<li>CORBARequest (reduceStock)</li>
+<li>MQOutput (MQOutput3)</li>
+<li>MQOutput (MQError3)</li>
+</ul>
+<p><img border="0" src="ReduceStock.gif" alt="Flow diagram for the reducing stock quantity process" /></p>
+<p>The Label node receives the routed message request. The CORBARequest node invokes the reduceStock 
+operation of the CORBA server application that is passing the input parameters, and returns a response
+that is propagated to a WebSphere MQ queue.</p>
+<p>Any user-defined exceptions that are thrown from the CORBA server Java application are propagated down
+the Error terminal of the CORBARequest node to another WebSphere MQ queue.</p>
+
+<h2>Deleting a stock item process</h2>
+<p>This process flow consists of the following nodes:</p>
+<ul>
+<li>Label</li>
+<li>CORBARequest (deleteStockItem)</li>
+<li>MQOutput (MQOutput4)</li>
+<li>MQOutput (MQError4)</li>
+</ul>
+<p><img border="0" src="DeleteStockItem.gif" alt="Flow diagram for the deleting a stock item process"/></p>
+<p>The Label node receives the routed message request. The CORBARequest node invokes the deleteStockItem
+operation of the CORBA server application that is passing the input parameters, and returns a response
+that is propagated to a WebSphere MQ queue.</p>
+<p>Any user-defined exceptions that are thrown from the CORBA server Java application are propagated down
+the Error terminal of the CORBARequest node to another WebSphere MQ queue.</p>
+
+    
+<p class="samplehome"><a href="index.html">Back to sample home</a></p>
+<p></p>
+</body>
+</html>

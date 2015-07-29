@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2010, 2013
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="../../com.ibm.etools.msgbroker.samplesgallery/scripts/samples.js" type="text/javascript" xml:space="preserve"> </script>
+<script src="../../org.eclipse.help/livehelp.js" type="text/javascript" xml:space="preserve"> </script>
+<link href="css/bip4.css" rel="stylesheet" type="text/css" />
+<link href="css/gallery_common.css" rel="stylesheet" type="text/css" />
+<link href="css/gallery_messagebroker.css" rel="stylesheet" type="text/css" />
+<title>Running the CORBA nodes sample</title>
+</head>
+<body class="sampcont">
+<h1>Running the CORBA nodes sample</h1>
+<p>If you encounter any problems when you run the sample, 
+see <a href="../../com.ibm.etools.mft.doc/bu43950_.htm">Resolving problems when running samples</a> 
+in the IBM Integration Bus documentation.</p>
+
+<p>To run this client-server CORBA application on your computer, complete the following steps:</p>
+<ol>
+<li>Ensure that the naming service: tnameserv is running. If you have not started the naming service, start it. 
+<p>On Linux: To start tnameserv from a Linux command shell, enter:</p>
+
+<pre>
+  tnameserv -ORBInitialPort 2809
+</pre>
+
+<p>On Windows: From an IBM Integration command console, enter:</p> 
+
+<pre>
+  start tnameserv -ORBInitialPort 2809
+</pre>
+
+<p><span class="input">2809</span> is the port on which you want the name server to run and 
+is the default value if <span class="input">-ORBInitialPort</span> is omitted.</p>
+</li>
+<li>Start the stock control system server: SCSServer. 
+<p>To start the SCSServer from the IBM Integration Toolkit:</p> 
+<ul>
+<li>Expand the CORBANodesSample Java project in the workspace.
+</li>
+<li>Right-click <span class="filepath">SCSServer.java</span> and select <span class="uicontrol">Run As &gt; Run Configurations</span>.
+</li>
+<li>Right-click <span class="uicontrol">JavaApplication</span> and select <span class="uicontrol">New</span>.
+</li>
+<li>Click <span class="uicontrol">Run</span> to start the CORBA server Java application. 
+You can change the default port of <span class="input">2809</span> by passing the command line argument 
+<span class="input">-ORBInitialPort</span> to the JVM. 
+</li>
+</ul>
+</li>
+<li>Run the client application.
+<p>In the Test Client you can:</p>
+<ul>
+<li>Create a stock item
+</li>
+<li>Add stock
+</li>
+<li>Get a stock item
+</li>
+<li>Reduce stock
+</li>
+<li>Delete a stock item
+</li>
+</ul>
+<ol>
+<li>If you have changed the port number from the default value of <span class="input">2809</span>, 
+you must change this value on each of the CORBARequest nodes:
+<ol>
+<li>Click the CORBARequest node, select <span class="uicontrol">Properties</span> 
+and go to the <span class="uicontrol">Basic</span> tab.
+</li>
+<li>In the <span class="uicontrol">Naming services</span> property, 
+change the port number from the default value of <span class="input">2809</span>.
+</li>
+<li>Save the message flow, rebuild and re-deploy the broker archive (BAR) file to the integration node.
+</li>
+</ol></li>
+<li>Double-click one of the following flow tests to open it in the Test Client
+ and click <span class="uicontrol">Send Message</span>.
+ <ul>
+ 
+<li><p>You can use the following request message to create a new product item:</p>
+<pre>
+&lt;StockControlManagementSystem.createNewStockItem&gt;
+&lt;sku&gt;123&lt;/sku&gt;
+&lt;name&gt;apple&lt;/name&gt;
+&lt;price&gt;1.99&lt;/price&gt;
+&lt;/StockControlManagementSystem.createNewStockItem&gt;
+</pre>
+<p>If the response is successful, you see the following message:</p>
+<pre>
+&lt;StockControlManagementSystem.createNewStockItemResponse&gt;
+&lt;sku&gt;123&lt;/sku&gt;
+&lt;/StockControlManagementSystem.createNewStockItemResponse&gt;
+</pre></li>
+
+<li><p>You can use the following request message to increment the stock level of a product item by one:</p>
+<pre>
+&lt;StockControlManagementSystem.addStock&gt;
+&lt;sku&gt;123&lt;/sku&gt;
+&lt;number&gt;1&lt;/number&gt;
+&lt;/StockControlManagementSystem.addStock&gt;
+</pre>
+<p>If the response is successful, you see the following message:</p>
+<pre>
+&lt;StockControlManagementSystem.addStockResponse&gt;
+&lt;quantity&gt;1&lt;/quantity&gt;
+&lt;/StockControlManagementSystem.addStockResponse&gt;
+</pre></li>
+
+<li><p>You can use the following request message to retrieve details of a product item:</p>
+<pre>
+&lt;StockControlManagementSystem.getSKU&gt;
+&lt;name&gt;apple&lt;/name&gt;
+&lt;/StockControlManagementSystem.getSKU&gt;
+</pre>
+<p>If the response is successful, you see the following message:</p>
+<pre>
+&lt;ResponseData&gt;
+&lt;StockControlManagementSystem.getStockResponse&gt;
+&lt;_return&gt;123&lt;/_return&gt;
+&lt;/StockControlManagementSystem.getStockResponse&gt;
+&lt;StockControlManagementSystem.getPriceResponse&gt;
+&lt;_return&gt;1.99E+0&lt;/_return&gt;
+&lt;/StockControlManagementSystem.getPriceResponse&gt;
+&lt;StockControlManagementSystem.getStockLevelResponse&gt;
+&lt;_return&gt;1&lt;/_return&gt;
+&lt;/StockControlManagementSystem.getStockLevelResponse&gt;
+&lt;/ResponseData&gt;
+</pre></li>
+
+ </ul>
+ </li>
+
+</ol>
+
+<p>These responses are the collected set of responses from multiple CORBA requests 
+to retrieve all of the details relating to a product item.</p>
+
+<p>If any of the above responses fail, the reason for the exception is displayed as below:</p>
+<pre>
+&lt;SKUNameAlreadyExist&gt;
+&lt;sku&gt;123&lt;/sku&gt;
+&lt;/SKUNameAlreadyExist&gt;
+</pre>
+</li>
+</ol>
+
+<p class="samplehome"><a href="index.html">Back to sample home</a></p>
+<p></p>
+</body>
+</html>

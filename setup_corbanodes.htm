@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2010, 2013
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Setting up the CORBA nodes sample</title>
+<script src="../../com.ibm.etools.msgbroker.samplesgallery/scripts/samples.js" type="text/javascript" xml:space="preserve"> </script>
+<script src="../../org.eclipse.help/livehelp.js" type="text/javascript" xml:space="preserve"> </script>
+<link href="css/bip4.css" rel="stylesheet" type="text/css" />
+<link href="css/gallery_common.css" rel="stylesheet" type="text/css" />
+<link href="css/gallery_messagebroker.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>Setting up the CORBA nodes sample </h1>
+<p>The CORBA nodes sample contains a single message flow that can be deployed on IBM Integration Bus.
+The message flow is under the CORBANodesSampleFlows project and is called 
+<span class="filepath">StockWarehouseClient.msgflow</span></p>
+<p>You might see the following warning message about the CORBARequest nodes:</p>
+<pre>Data location: The RequestData element in XPath $LocalEnvironment/RequestData was not found in the XML Schema.</pre>
+<p>You can ignore this message because the RequestData folder is not contained in the XML Schema.</p>
+<p>The Interface Definition Language (IDL) file that is used by the message flow is under the CORBANodesSampleMS message set project and is called 
+<span class="filepath">StockControlInterface.idl</span></p>
+<p>The CORBA server Java application code is contained in the CORBANodesSampleJava Java project.
+This application provides a two-way message request-response exchange between 
+IBM Integration Bus and CORBA server Java applications.</p>
+<p>You will see warning messages in the CORBA server Java application code.</p>
+<p>You can ignore these messages because they have been generated from the IDL.</p>
+
+<p>Complete the following steps:</p>
+<ol>
+<li>Ensure that local queue manager IB9QMGR exists with listener port <span class="input">2414</span>. 
+If it does not exist, create it.
+<br/>(<b>Note:</b> The local queue manager IB9QMGR is created in the default configuration.)</li>
+<li>Ensure that the following local queues exist:  
+<ul>
+<li>CORBA_SAMPLE_IN</li>
+<li>CORBA_SAMPLE_OUT</li>
+<li>CORBA_SAMPLE_ERROR</li>
+</ul>
+If they do not exist, create them.</li>
+<li>Ensure that you have associated an integration node with the local queue manager IB9QMGR. 
+If you have not associated an integration node, create the integration node.</li>
+<li>Start the naming service: tnameserv 
+<p>On Linux: To start tnameserv from a Linux command shell, enter:</p>
+
+<pre>
+  tnameserv -ORBInitialPort 2809
+</pre>
+
+<p>On Windows: From an IBM Integration command console, enter:</p> 
+
+<pre>
+  start tnameserv -ORBInitialPort 2809
+</pre>
+
+<p><span class="input">2809</span> is the port on which you want the name server to run and 
+is the default value if <span class="input">-ORBInitialPort</span> is omitted.
+<br/>(<b>Note:</b> The port that is specified must have no other processes listening on it, otherwise the CORBA nodes sample will fail to deploy.)
+</p>
+</li>
+<li>Deploy the <span class="filepath">CORBANodesSample.bar</span> BAR file to the integration node.</li>
+</ol>
+
+<p>You have successfully set up the CORBA nodes sample.</p>
+
+<p class="samplehome"><a href="index.html">Back to sample home</a></p>
+
+</body>
+</html>
